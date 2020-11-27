@@ -14,8 +14,10 @@
   <script>
     !function(){
       // serviceWorkerの登録
-      if('serviceWorker' in navigator){}else{
+      if('serviceWorker' in navigator){
           div.innerText += "¥nserviceWorker in navi"
+      }else{
+          div.innerText += "¥nserviceWorker not found navi"
           return
       }
       
