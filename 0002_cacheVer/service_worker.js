@@ -40,7 +40,7 @@ self.addEventListener('activate', function(event){
         if(!キャッシュの識別名.includes(key)){ caches.delete(key) }
       })
     )).then(function(){
-      console.log(CACHE_NAME + "activated")
+      console.log(キャッシュの識別名 + "activated")
     })
   )
 })
