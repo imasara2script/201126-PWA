@@ -1,5 +1,5 @@
 onload = function(){
   btn.onclick = function(){
-    div.innerText = '動作ＯＫ！'
+    追記('動作ＯＫ！')
   }
 }
