@@ -1,0 +1,10 @@
+https://qiita.com/poster-keisuke/items/6651140fa20c7aa18474
+
+サンプルプログラムがある。
+手元のスマホで動作確認してないけど、オフライン状態では動かなさそうな気がしている。
+　・キャッシュファイルが「'/poster-keisuke.github.io/'」しか指定されていない。
+　・index.htmlに以下の参照が入っているが、キャッシュされないので動かないのでは。
+　　<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+ 
+しかし動作している状態のスクショ（オフライン状態なのかは不明）が貼られているので
+動作確認はされている…？
