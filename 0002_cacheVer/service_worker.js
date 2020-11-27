@@ -32,7 +32,7 @@ self.addEventListener('fetch', function(event) {
 
 // Cache Storage にキャッシュされているサービスワーカーのkeyに変更があった場合
 // 新バージョンをインストール後、旧バージョンのキャッシュを削除する
-// (このファイルでは CACHE_NAME をkeyの値とみなし、変更を検知している)
+// (このファイルでは キャッシュの識別名 をkeyの値とみなし、変更を検知している)
 self.addEventListener('activate', function(event){
   event.waitUntil(
     caches.keys().then(keys => Promise.all(
