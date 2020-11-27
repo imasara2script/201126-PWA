@@ -7,11 +7,13 @@
     <title>PWA Sample</title>
   </head>
   <body>
+    最終更新<span id=span></span>
     <div id=div style="background-color:#ccf; padding:20px"> ボタンを押してください </div>
     <button id=btn>test</button>
   </body>
   <script src="外部.js"></script>
   <script>
+    span.value = document.lastModified
     !function(){
       // serviceWorkerの登録
       if('serviceWorker' in navigator){
