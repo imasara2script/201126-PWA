@@ -2,7 +2,7 @@
 // https://qiita.com/poster-keisuke/items/6651140fa20c7aa18474
 
 // キャッシュファイルの指定
-var キャッシュの識別名 = 'pwa-sample-caches'
+キャッシュの識別名 = 'pwa-sample-caches'
 var キャッシュ対象のURL配列 = [
   //  '/imasara2script.github.io/201126-PWA/0324_hello/',
   //  '/imasara2script.github.io/201126-PWA/0324_hello/外部.js'
