@@ -14,22 +14,34 @@
   <script src="外部.js"></script>
   <script>
     span.innerText = document.lastModified
+    
+    追記 = function(str){ div.innerText += '<br>' + str }
+    
     !function(){
       // serviceWorkerの登録
       if('serviceWorker' in navigator){
-          div.innerText += "¥nserviceWorker in navi"
+          追記('serviceWorker in navi')
       }else{
-          div.innerText += "¥nserviceWorker not found navi"
+          追記('serviceWorker not found navi')
           return
       }
       
       navigator.serviceWorker.register('service_worker.js').then(function(registration) {
           console.log('ServiceWorker registration successful with scope: ', registration.scope)
-          div.innerText += "¥nキャッシュの識別名:" + キャッシュの識別名
+          追記('register success')
       }).catch(function(err) {
           console.log('ServiceWorker registration failed: ', err)
+          追記('register failed')
           div.innerText += "¥n register err.¥nキャッシュの識別名:" + キャッシュの識別名
       })
+      
+      try{
+        キャッシュの識別名 += ''
+        追記('キャッシュの識別名[' + キャッシュの識別名 + ']')
+      }
+      catch(e){
+        追記('「キャッシュの識別名」は未定義（このスコープでは参照不可）')
+      }
     }()
   </script>
 </html>
