@@ -1,0 +1,3 @@
+１．「Add file」
+２．「ファイル名」の入力欄に「作成したいフォルダ名/.gitkeep」のように入力する。
+３．「Commit new file」
