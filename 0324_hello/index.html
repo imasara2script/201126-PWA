@@ -20,7 +20,8 @@
           console.log('ServiceWorker registration successful with scope: ', registration.scope)
           div.innerText += "¥nキャッシュの識別名:" + キャッシュの識別名
       }).catch(function(err) {
-          console.log('ServiceWorker registration failed: ', err);
+          console.log('ServiceWorker registration failed: ', err)
+          div.innerText += "¥n register err.¥nキャッシュの識別名:" + キャッシュの識別名
       })
     }()
   </script>
