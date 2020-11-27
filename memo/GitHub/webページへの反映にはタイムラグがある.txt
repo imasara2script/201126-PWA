@@ -1,1 +1,6 @@
 GitHubの方で書き換えてもweb表示はすぐには更新されないので、表示されている内容がいつの更新分なのか注意が必要
+
+↓
+
+https://qiita.com/budougumi0617/items/221bb946d1c90d6769e9
+あとは(若干タイムラグがあるらしいので、)一服してからhttp://yourself-account.github.io/yourRepositoryアクセスするだけ。
