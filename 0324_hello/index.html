@@ -14,7 +14,10 @@
   <script>
     !function(){
       // serviceWorkerの登録
-      if('serviceWorker' in navigator){}else{ return }
+      if('serviceWorker' in navigator){}else{
+          div.innerText += "¥nserviceWorker in navi"
+          return
+      }
       
       navigator.serviceWorker.register('service_worker.js').then(function(registration) {
           console.log('ServiceWorker registration successful with scope: ', registration.scope)
