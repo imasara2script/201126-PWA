@@ -16,7 +16,6 @@
     }).catch(function(err) {
         console.log('ServiceWorker registration failed: ', err)
         追記('register failed')
-        div.innerText += "¥n register err.¥nキャッシュの識別名:" + キャッシュの識別名
     })
 
     try{
