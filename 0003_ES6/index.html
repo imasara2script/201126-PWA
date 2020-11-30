@@ -1,0 +1,17 @@
+<html>
+<title>0003_ES6</title>
+<body>
+<div id=div style="background-color:#cfc">表示領域</div>
+</body>
+<script>
+  追記 = function(str){ div.innerText += '\r\n\r\n' + str }
+  
+  onload = () => {
+    追記('load')
+  }
+  
+  div.addEventListener('click', () => {
+    追記('click')
+  })
+</script>
+</html>
