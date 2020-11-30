@@ -13,7 +13,6 @@ self.addEventListener('install', function(event) {
         caches
             .open(キャッシュの識別名)
             .then(function(cache) {
-                追記('キャッシュ対象のURL\r\n[　　'+ キャッシュ対象のURL配列.join('\r\n　　') +']')
                 return cache.addAll(キャッシュ対象のURL配列)
             })
     )
@@ -38,7 +37,10 @@ self.addEventListener('activate', function(event){
   event.waitUntil(
     caches.keys().then(keys => Promise.all(
       keys.map(function(key){
-        if(!キャッシュの識別名.includes(key)){ caches.delete(key) }
+        if(!キャッシュの識別名.includes(key)){
+            console.log('')
+            caches.delete(key)
+        }
       })
     )).then(function(){
       console.log(キャッシュの識別名 + "activated")
