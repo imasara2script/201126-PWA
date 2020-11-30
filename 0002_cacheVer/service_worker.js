@@ -13,6 +13,7 @@ self.addEventListener('install', function(event) {
         caches
             .open(キャッシュの識別名)
             .then(function(cache) {
+                追記('キャッシュ対象のURL\r\n[　　'+ キャッシュ対象のURL配列.join('\r\n　　') +']')
                 return cache.addAll(キャッシュ対象のURL配列)
             })
     )
