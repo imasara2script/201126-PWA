@@ -31,4 +31,13 @@
       btn.onclick = function(){
           追記('動作ＯＫ！')
       }
+      
+      キャッシュ名の一覧を出力する()
+  }
+
+  キャッシュ名の一覧を出力する = function(){
+    caches.keys().then(keys => Promise.all(
+      追記('キャッシュ名の一覧')
+      keys.map(function(key){ 追記('　'+key) } )
+    ))
   }
