@@ -35,7 +35,7 @@
       キャッシュ名の一覧を出力する()
   }
 
-  キャッシュ名の一覧を出力する = function(){
+  キャッシュ名の一覧を出力する = () => {
     追記('キャッシュ名の一覧')
     caches.keys().then(keys => Promise.all(
       keys.map(function(key){ 追記('　'+key) })
