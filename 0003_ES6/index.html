@@ -11,7 +11,11 @@
   }
   
   div.addEventListener('click', () => {
-    追記('click')
+    var a = (str) => {
+       return str + ' ('+str.length+')'
+    }
+    
+    追記(a('click'))
   })
 </script>
 </html>
