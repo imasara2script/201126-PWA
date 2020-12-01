@@ -12,11 +12,11 @@
     追記('test:' + test(123))
   }
   
-  test = () => {
+  test = (() => {
     var 内部 = 'abc'
     var main = str => (内部 + str)
     return main
-  }()
+  })()
   
   div.addEventListener('click', () => {
     var a = (str) => {
