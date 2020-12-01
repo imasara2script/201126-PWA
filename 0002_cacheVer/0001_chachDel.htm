@@ -8,13 +8,15 @@
     </head>
     <body>
         <div style="background-color:#ccf; padding:10px; margin:10px">log</div>
+        <div id=div></div>
     </body>
     <script>
         追記 = (() => {
             var elemモデル = document.body.removeChild(document.getElementsByTagName('div')[0])
             var main = str => {
                 var elem = elemモデル.cloneNode(true)
-                document.body.insertBefore(elem)
+              //  document.body.insertBefore(elem)
+                div.insertBefore(elem)
                 elem.innerText = str
             }
             return main
