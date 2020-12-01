@@ -11,7 +11,7 @@
     </body>
     <script>
         追記 = (() => {
-            var elemモデル = document.getElementsByTagName('div')[0].removeNode(true)
+            var elemモデル = document.body.removeChild(document.getElementsByTagName('div')[0])
             var main = str => {
                 var elem = elemモデル.cloneNode(true)
                 document.body.insertBefore(elem)
