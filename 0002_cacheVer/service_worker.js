@@ -2,7 +2,7 @@
 // https://qiita.com/TakeshiNickOsanai/items/8d012a128827c9db980d
 
 // キャッシュファイルの指定
-キャッシュの識別名 = 'pwa-sample-caches'
+キャッシュの識別名 = 'pwa-sample-caches0'
 var キャッシュ対象のURL配列 = [
     './外部.js'
 ]
