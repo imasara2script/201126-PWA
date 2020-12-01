@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="manifest" href="manifest.json">
+        <title>キャッシュ削除</title>
+    </head>
+    <body>
+        <div style="background-color:#ccf; padding:10px; margin:10px">log</div>
+    </body>
+    <script src="外部.js"></script>
+    <script>
+        追記 = (() => {
+            var elemモデル = document.getElementsByTagName('dir')[0].removeNode(true)
+            var main = str => {
+                var elem = elemモデル.cloneNode(true)
+                document.body.insertBefore(elem)
+                elem.innerText = str
+            }
+            return main
+        })()
+        
+        onload = () => {
+            追記('最終更新 ' + document.lastModified)
+            追記('キャッシュ名の一覧\r\n　' + キャッシュ.getList().join('\r\n　'))
+        }
+        
+        キャッシュ = (() => {
+            return {
+                getList : () => {
+                    var arr = []
+                    caches.keys().then(keys => Promise.all(
+                        keys.map(key => arr.push(key) )
+                    ))
+                    return arr
+                }
+            }
+        })()
+    </script>
+</html>
