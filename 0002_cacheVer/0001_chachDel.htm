@@ -12,10 +12,10 @@
     <script>
         追記 = (() => {
             var elemモデル = document.body.removeChild(document.getElementsByTagName('div')[0])
-            var main = str => {
+            var main = (str, swHTML) => {
                 var elem = elemモデル.cloneNode(true)
                 document.body.insertBefore(elem, null)
-                elem.innerText = str
+                elem[swHTML, 'innerHTML' : 'innerText'] = str
             }
             return main
         })()
@@ -23,6 +23,8 @@
         onload = () => {
             追記('最終更新 ' + document.lastModified)
             追記('キャッシュ名の一覧\r\n　' + キャッシュ.getList().join('\r\n　'))
+            
+            ServiceWorkerコントローラ.インストール('./0001_sw.js')
         }
         
         キャッシュ = (() => {
@@ -45,32 +47,46 @@
             var レジスター = (()=>{
                 var prom0 // promise
                 var swr // ServiceWorkerRegistration
-                return {
-                    SWファイルのURLを指定 : URL => {
-                        // URLの例「./sw.js」 -> スコープは「./」以下に限定される。それより上位のディレクトリにスコープを設定する事は仕様上不可能。
-                        prom0 = navigator.serviceWorker.register(URL)
-                    },
-                    インストールを実行 : ()=> {
-                        prom0.then(
-                            registration => { 追記('サービスワーカー登録成功:', swr = registration) },
-                            error        => { 追記('サービスワーカー登録失敗:', error) }
-                        )
-                    },
-                    SWの状態監視を開始 : () => {
-                        swr.addEventListener('updatefound', ()=>{
-                            // SWファイルの「インストール or 更新」を開始するとこのイベントが発生する。
-                            追記('サービスワーカーのインストール中')
-                        })
-                        swr.addEventListener('statechange', ()=>{
-                            // swr.installing.onstatechangeじゃないとダメかも？
-                            
+                
+                var SWファイルのURLを指定 = URL => {
+                    // URLの例「./sw.js」 -> スコープは「./」以下に限定される。それより上位のディレクトリにスコープを設定する事は仕様上不可能。
+                    prom0 = navigator.serviceWorker.register(URL)
+                }
+                var インストールを実行 = ()=> {
+                    prom0.then(
+                        registration => { 追記('サービスワーカー登録成功:', swr = registration) },
+                        error        => { 追記('サービスワーカー登録失敗:', error) }
+                    )
+                }
+                var SWの状態監視を開始 = () => {
+                    swr.addEventListener('updatefound', ()=>{
+                        // SWファイルの「インストール or 更新」を開始するとこのイベントが発生する。
+                        追記('サービスワーカーのインストール中')
+                    })
+                    swr.addEventListener('statechange', ()=>{
+                        // swr.installing.onstatechangeじゃないとダメかも？
+                        var obj = {
+                            installing : 'インストール中'
+                            waiting    : 'インストール済み'
+                            active     : 'アクティブ化中 or アクティブ化済み'
                         }
+                        var arr = []
+                        for(var name in obj){
+                            arr.push('<td>' + [name, obj[name], swr[name]].join('</td><td>') + '</td>')
+                        }
+                        追記('<table border=1><tr>'+arr.join('</tr><tr>')+'</tr></table>', true)
                     }
+                }
+                
+                return URL => {
+                    SWファイルのURLを指定(URL)
+                    インストールを実行()
+                    SWの状態監視を開始()
                 }
             })()
             
             return {
-                インストール : URL => 
+                インストール : URL => レジスト(UL)
             }
         })()
     </script>
