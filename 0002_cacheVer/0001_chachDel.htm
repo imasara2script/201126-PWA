@@ -39,7 +39,7 @@
             }
         })()
         
-        ServiceWorkerコントローラ = (()={
+        ServiceWorkerコントローラ = (()=>{
             // ServiceWorkerをサポートしていないブラウザなら何も返さずに終了
             if('serviceWorker' in navigator){}else{return}
             追記('serviceWorker in navigator')
