@@ -15,7 +15,7 @@
             var main = (str, swHTML) => {
                 var elem = elemモデル.cloneNode(true)
                 document.body.insertBefore(elem, null)
-                elem[swHTML, 'innerHTML' : 'innerText'] = str
+                elem[swHTML ? 'innerHTML' : 'innerText'] = str
             }
             return main
         })()
