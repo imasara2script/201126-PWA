@@ -72,7 +72,7 @@
                         }
                         var arr = []
                         for(var name in obj){
-                            arr.push('<td>' + [name, obj[name], swr[name]].join('</td><td>') + '</td>')
+                            arr.push('<td>' + [name, obj[name], (swr[name] != null)].join('</td><td>') + '</td>')
                         }
                         追記('<table border=1><tr>'+arr.join('</tr><tr>')+'</tr></table>', true)
                     }
