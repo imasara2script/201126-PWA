@@ -40,7 +40,7 @@ self.addEventListener('activate', function(event){
         }
       })
     )).then(function(){
-      console.log(キャッシュの識別名 + "activated")
+      console.log('activated 「' + キャッシュの識別名 + '」')
     })
   )
 })
