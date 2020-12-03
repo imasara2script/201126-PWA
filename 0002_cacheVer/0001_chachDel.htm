@@ -63,7 +63,7 @@
                         // SWファイルの「インストール or 更新」を開始するとこのイベントが発生する。
                         追記('サービスワーカーのインストール中')
                     })
-                    swr.addEventListener('statechange', ()=>{
+                    swr.installing.addEventListener('statechange', ()=>{
                         // swr.installing.onstatechangeじゃないとダメかも？
                         var obj = {
                             installing : 'インストール中',
