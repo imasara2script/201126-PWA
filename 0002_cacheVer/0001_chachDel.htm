@@ -54,36 +54,33 @@
                 }
                 var インストールを実行 = ()=> {
                     prom.インストール後 = prom.登録後.then(
-                        registration => { 追記('サービスワーカー登録成功:'); return registration },
+                        registration => { 追記('サービスワーカー登録成功:'); return SWの状態監視を開始(registration) },
                         error        => { 追記('サービスワーカー登録失敗:'); return error }
                     )
                 }
-                var SWの状態監視を開始 = () => {
-                    prom.インストール後.then(swr=>{
-                        swr.addEventListener('updatefound', ()=>{
-                            // SWファイルの「インストール or 更新」を開始するとこのイベントが発生する。
-                            追記('サービスワーカーのインストール中')
-                        })
-                        swr.addEventListener('statechange', ()=>{
-                            // swr.installing.onstatechangeじゃないとダメかも？
-                            var obj = {
-                                installing : 'インストール中',
-                                waiting    : 'インストール済み',
-                                active     : 'アクティブ化中 or アクティブ化済み'
-                            }
-                            var arr = []
-                            for(var name in obj){
-                                arr.push('<td>' + [name, obj[name], (swr[name] != null)].join('</td><td>') + '</td>')
-                            }
-                            追記('<table border=1><tr>'+arr.join('</tr><tr>')+'</tr></table>', true)
-                        })
+                var SWの状態監視を開始 = (swr) => {
+                    swr.addEventListener('updatefound', ()=>{
+                        // SWファイルの「インストール or 更新」を開始するとこのイベントが発生する。
+                        追記('サービスワーカーのインストール中')
+                    })
+                    swr.addEventListener('statechange', ()=>{
+                        // swr.installing.onstatechangeじゃないとダメかも？
+                        var obj = {
+                            installing : 'インストール中',
+                            waiting    : 'インストール済み',
+                            active     : 'アクティブ化中 or アクティブ化済み'
+                        }
+                        var arr = []
+                        for(var name in obj){
+                            arr.push('<td>' + [name, obj[name], (swr[name] != null)].join('</td><td>') + '</td>')
+                        }
+                        追記('<table border=1><tr>'+arr.join('</tr><tr>')+'</tr></table>', true)
                     })
                 }
                 
                 return URL => {
                     SWファイルのURLを指定(URL)
                     インストールを実行()
-                    SWの状態監視を開始()
                 }
             })()
             
