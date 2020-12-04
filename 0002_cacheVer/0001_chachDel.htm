@@ -62,19 +62,21 @@
                     swr.addEventListener('updatefound', ()=>{
                         // SWファイルの「インストール or 更新」を開始するとこのイベントが発生する。
                         追記('サービスワーカーのインストール中')
-                    })
-                    swr.installing.addEventListener('statechange', ()=>{
-                        // swr.installing.onstatechangeじゃないとダメかも？
-                        var obj = {
-                            installing : 'インストール中',
-                            waiting    : 'インストール済み',
-                            active     : 'アクティブ化中 or アクティブ化済み'
-                        }
-                        var arr = []
-                        for(var name in obj){
-                            arr.push('<td>' + [name, obj[name], (swr[name] != null)].join('</td><td>') + '</td>')
-                        }
-                        追記('<table border=1><tr>'+arr.join('</tr><tr>')+'</tr></table>', true)
+                        
+                        // updatefoundイベントが発生するまではswr.installingの中身はnullなので、このタイミングでリスナーを追加する。
+                        swr.installing.addEventListener('statechange', ()=>{
+                            // swr.installing.onstatechangeじゃないとダメかも？
+                            var obj = {
+                                installing : 'インストール中',
+                                waiting    : 'インストール済み',
+                                active     : 'アクティブ化中 or アクティブ化済み'
+                            }
+                            var arr = []
+                            for(var name in obj){
+                                arr.push('<td>' + [name, obj[name], (swr[name] != null)].join('</td><td>') + '</td>')
+                            }
+                            追記('<table border=1><tr>'+arr.join('</tr><tr>')+'</tr></table>', true)
+                        })
                     })
                 }
                 
