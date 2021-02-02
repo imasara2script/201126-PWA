@@ -4,7 +4,14 @@
 // キャッシュファイルの指定
 キャッシュの識別名 = 'pwa-sample-caches0'
 var キャッシュ対象のURL配列 = [
-    './外部.js'
+    '/201126-PWA/0002_cacheVer/',
+    '/201126-PWA/0002_cacheVer/外部.js'
+    
+  //  './外部.js'
+    
+  //  '/pwa/',
+  //  '/pwa/css/style.css',
+  //  '/pwa/drawer.js'
 ]
 
 // インストール処理
